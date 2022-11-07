@@ -1,4 +1,3 @@
-// MODAL We are creating User table here
 const { Model, DataTypes, Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize("dadonuts-db", "user", "pass", {
@@ -26,7 +25,22 @@ User.init({
     uid: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4
-    }
+    },
+    street1: {
+        type: DataTypes.STRING
+    },
+    street2: {
+        type: DataTypes.STRING
+    },
+    city: {
+        type: DataTypes.STRING
+    },
+    postcode: {
+        type: DataTypes.STRING
+    },
+    phone: {
+        type: DataTypes.STRING
+    },
 }, {
     sequelize,
     modelName: "user",

@@ -13,16 +13,12 @@ app.use(express.json());
 app.use(cors({
   credentials: true,
   origin: [process.env.ORIGIN_URL],
-  methods: ["GET", "POST"]
+  methods: ["GET", "POST", "PUT"]
 }));
 app.use(cookieParser());
 
 app.use(auth);
 app.use(USER_ROUTE, users);
-
-app.get("/", (req, res) => {
-  res.send("server on");
-});
 
 app.listen(PORT, () => {
   console.log(`Running on port ${PORT}`);

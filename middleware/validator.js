@@ -11,11 +11,19 @@ const signupValRules = () => {
 }
 
 const loginValRules = () => {
-    return [
-      check("email", "Email is not valid").isEmail(),
-      check("password", "Min password length should be 3 characters").isLength({ min: 3 })
-    ];
-  }
+  return [
+    check("email", "Email is not valid").isEmail(),
+    check("password", "Min password length should be 3 characters").isLength({ min: 3 })
+  ];
+}
+
+const updateValRules = () => {
+  return [
+    check("street1", "Seems like street name is too short").isLength({ min: 3 }),
+    check("phone", "Phone number should be minimum 10 digits").isLength({ min: 10 }),
+    check("phone", "Phone number should be maximum 15 digits").isLength({ max: 15 })
+  ];
+}
 
 const validate = (req, res, next) => {
   const errors = validationResult(req);
@@ -30,5 +38,6 @@ const validate = (req, res, next) => {
 module.exports = {
   signupValRules,
   loginValRules,
+  updateValRules,
   validate
 }
